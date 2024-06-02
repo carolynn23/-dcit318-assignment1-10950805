@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Prompt the user to enter a numerical grade between 0 and 100
+        Console.WriteLine("Please enter a numerical grade between 0 and 100:");
+
+        // Read the input from the user
+        string input = Console.ReadLine();
+        int grade;
+
+        // Try to parse the input as an integer
+        if (int.TryParse(input, out grade))
+        {
+            // Ensure the grade is within the valid range of 0 to 100
+            if (grade >= 0 && grade <= 100)
+            {
+                // Get the letter grade using the GetLetterGrade method
+                string letterGrade = GetLetterGrade(grade);
+
+                // Display the letter grade to the user
+                Console.WriteLine($"The letter grade for {grade} is {letterGrade}.");
+            }
+            else
+            {
+                // Inform the user if the grade is out of the valid range
+                Console.WriteLine("The grade must be between 0 and 100.");
+            }
+        }
+        else
+        {
+            // Inform the user if the input is not a valid integer
+            Console.WriteLine("Invalid input. Please enter a numerical grade between 0 and 100.");
+        }
+    }
+
+    // Method to determine the letter grade based on the numerical grade
+    static string GetLetterGrade(int grade)
+    {
+        // Use a switch statement to determine the letter grade
+        switch (grade / 10)
+        {
+            case 10: // This case covers grades 100
+            case 9:  // This case covers grades 90-99
+                return "A: EXCELLENT";
+            case 8:  // This case covers grades 80-89
+                return "B: VERY GOOD";
+            case 7:  // This case covers grades 70-79
+                return "C: AVERAGE";
+            case 6:  // This case covers grades 60-69
+                return "D: PASS";
+            default: // This case covers grades 0-59
+                return "F:FAIL";
+        }
+    }
+}
+
