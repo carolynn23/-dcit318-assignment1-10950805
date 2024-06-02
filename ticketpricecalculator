@@ -1,0 +1,37 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Prompt the user to enter their age
+        Console.WriteLine("Please enter your age:");
+
+        // Read the input from the user
+        string input = Console.ReadLine();
+        int age;
+
+        // Try to parse the input as an integer
+        if (int.TryParse(input, out age))
+        {
+            // Determine the ticket price based on the age
+            int ticketPrice;
+            if (age >= 65 || age <= 12)
+            {
+                ticketPrice = 7; // Discounted price for seniors and children
+            }
+            else
+            {
+                ticketPrice = 10; // Regular price for others
+            }
+
+            // Display the ticket price
+            Console.WriteLine($"The ticket price for age {age} is GHC{ticketPrice}.");
+        }
+        else
+        {
+            // Inform the user if the input is not a valid integer
+            Console.WriteLine("Invalid input. Please enter a valid age.");
+        }
+    }
+}
