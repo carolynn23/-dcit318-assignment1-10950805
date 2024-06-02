@@ -1,0 +1,49 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Prompt the user to enter the lengths of the three sides of the triangle
+        Console.WriteLine("Enter the length of the first side:");
+        string input1 = Console.ReadLine();
+
+        Console.WriteLine("Enter the length of the second side:");
+        string input2 = Console.ReadLine();
+
+        Console.WriteLine("Enter the length of the third side:");
+        string input3 = Console.ReadLine();
+
+        // Try to parse the inputs as doubles
+        double side1, side2, side3;
+        bool isValid1 = double.TryParse(input1, out side1);
+        bool isValid2 = double.TryParse(input2, out side2);
+        bool isValid3 = double.TryParse(input3, out side3);
+
+        // Check if all inputs are valid
+        if (isValid1 && isValid2 && isValid3)
+        {
+            // Determine the type of the triangle
+            if (side1 == side2 && side2 == side3)
+            {
+                // All three sides are equal
+                Console.WriteLine("The triangle is Equilateral.");
+            }
+            else if (side1 == side2 || side2 == side3 || side1 == side3)
+            {
+                // Two sides are equal
+                Console.WriteLine("The triangle is Isosceles.");
+            }
+            else
+            {
+                // No sides are equal
+                Console.WriteLine("The triangle is Scalene.");
+            }
+        }
+        else
+        {
+            // Inform the user if any of the inputs are not valid numbers
+            Console.WriteLine("Invalid input. Please enter valid numbers for the lengths of the sides.");
+        }
+    }
+}
